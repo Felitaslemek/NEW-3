@@ -130,11 +130,11 @@ const LoginPage = ({ onClose }) => {
               <br />
               solusi perut lapar
             </h2>
-            <div className="relative w-64 h-[500px]">
+            <div className="relative w-full max-w-xs h-auto rounded-3xl overflow-hidden shadow-xl">
               <img
                 src={appPreview}
                 alt="App Preview"
-                className="w-full h-full object-cover rounded-3xl shadow-xl"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>

@@ -6,15 +6,29 @@ const LoginPage = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false); // buat notifikasi keberhasilan
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log('Login attempted with:', name, email, password);
-    onClose();
+    setIsSuccess(true);
+
+    setTimeout(() => {
+      setIsSuccess(false);
+      onClose();
+    }, 1000); 
   };
 
   return (
     <div className="bg-white w-full max-w-5xl rounded-lg shadow-lg overflow-hidden relative">
+      {/* Notifikasi berhasil */}
+      {isSuccess && (
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-black text-lg font-semibold px-4 py-2">
+          Login berhasil!
+        </div>
+      )}
+
       {/* Tombol Kembali */}
       <div className="absolute top-4 left-4">
         <button
@@ -77,7 +91,7 @@ const LoginPage = ({ onClose }) => {
                 </label>
                 <div className="relative">
                   <input
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -91,7 +105,7 @@ const LoginPage = ({ onClose }) => {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
                   >
-                    {showPassword ? "👁️" : "👁️‍🗨️"}
+                    {showPassword ? '👁️' : '👁️‍🗨️'}
                   </button>
                 </div>
               </div>
@@ -105,7 +119,7 @@ const LoginPage = ({ onClose }) => {
             </form>
 
             <p className="mt-4 text-center font-semibold text-sm">
-              Belum memiliki akun?{" "}
+              Belum memiliki akun?{' '}
               <button
                 onClick={() => {
                   onClose();

@@ -40,11 +40,13 @@ function ProductShowcase() {
             onMouseEnter={() => handleHover(item.id)}
             onMouseLeave={handleLeave}
           >
-            <img
-              src={hoveredItem === item.id ? item.priceImage : item.image}
-              alt={item.name}
-              className="w-full h-72 object-contain transition-opacity duration-300 bg-white rounded-lg"
-            />
+            <div className="aspect-w-1 aspect-h-1">
+              <img
+                src={hoveredItem === item.id ? item.priceImage : item.image}
+                alt={item.name}
+                className="w-full h-full object-cover rounded-t-lg"
+              />
+            </div>
             <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/60 text-white rounded-b-lg flex justify-between">
               <span className="font-semibold text-sm">{item.name}</span>
               <span className="font-semibold text-sm">{item.price}</span>
